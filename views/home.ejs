@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To-Do App</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+
+        input,
+        button {
+            padding: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📝 To-Do List</h1>
+
+    <form action="/add" method="POST">
+        <input type="text" name="task" placeholder="Enter new task" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        <% tasks.forEach(function(task, index) { %>
+            <li>
+                <%= index + 1 %>. <%= task %>
+            </li>
+            <% }); %>
+    </ul>
+</body>
+
+</html>
