@@ -25,6 +25,12 @@ app.post("/add", (req, res) => {
     res.redirect("/");
 });
 
+app.post("/delete", (req, res) => {
+    const index = req.body.index;
+    tasks.splice(index, 1);
+    res.redirect("/");
+});
+
 app.listen(port, () => {
-    console.log(`To-Do App running at http://localhost:${port}`);
+    console.log(`✅ To-Do App running at http://localhost:${port}`);
 });

@@ -2,44 +2,36 @@
 <html>
 
 <head>
-    <title>To-Do App</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 2rem;
-        }
-
-        input,
-        button {
-            padding: 8px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-    </style>
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-    <h1>📝 To-Do List</h1>
+    <div class="container">
+        <h1>📝 To-Do App</h1>
 
-    <form action="/add" method="POST">
-        <input type="text" name="task" placeholder="Enter new task" required>
-        <button type="submit">Add</button>
-    </form>
+        <form action="/add" method="POST" class="form">
+            <input type="text" name="task" placeholder="Enter a new task" required>
+            <button type="submit">Add</button>
+        </form>
 
-    <ul>
-        <% tasks.forEach(function(task, index) { %>
-            <li>
-                <%= index + 1 %>. <%= task %>
-            </li>
-            <% }); %>
-    </ul>
+        <h3>Total Tasks: <%= tasks.length %>
+        </h3>
+
+        <ul class="task-list">
+            <% tasks.forEach(function(task, index) { %>
+                <li>
+                    <span>
+                        <%= task %>
+                    </span>
+                    <form action="/delete" method="POST">
+                        <input type="hidden" name="index" value="<%= index %>">
+                        <button type="submit">❌</button>
+                    </form>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
 </body>
 
 </html>
